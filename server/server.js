@@ -1,27 +1,19 @@
 'use strict';
 
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import express from 'express';
-import path from 'path';
-import Hello from '../src/components/hello';
-import About from '../src/components/about';
-
-const PORT = 8001;
+var express = require('express');
+var compression = require('compression');
+var path = require('path');
 
 const app = express();
 
-app.set('views', path.join(__dirname, '../src/views'))
-app.set('view engine', 'pug');
+app.use(compression());
+app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/static', express.static(path.resolve('static')));
-app.get('/about', (req, res) => {
-  const content = renderToString(<About />);
-  res.render('index', { content });
-});
 app.get('*', (req, res) => {
-  const content = renderToString(<Hello />);
-  res.render('index', { content });
-});
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+})
 
-app.listen(PORT);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log('Production Express server running at localhost:' + PORT);
+});
