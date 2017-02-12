@@ -36,6 +36,10 @@ function renderPage(appHtml) {
     <meta charset=utf-8/>
     <title>helloworld-lambda-web</title>
     <link rel=stylesheet href="/index.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
     <div id=app>${appHtml}</div>
     <script src="/bundle.js">
   `

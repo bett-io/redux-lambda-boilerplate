@@ -1,17 +1,30 @@
 import React from 'react'
-import NavLink from './NavLink'
+import { Link } from 'react-router'
+import { Navbar, NavItem, Nav } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>helloworld-lambda-web</h1>
-        <ul role="nav">
-          <li><NavLink to="/" onlyActiveOnIndex={true}>Home</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
-          <li><NavLink to="/repos">Repos</NavLink></li>
-          <li><NavLink to="/hello">Hello</NavLink></li>
-        </ul>
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to="/">Home</Link>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav>
+            <LinkContainer to="/about">
+              <NavItem eventKey={1}>About</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/repos">
+              <NavItem eventKey={2}>Repos</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/hello">
+              <NavItem eventKey={3}>Hello</NavItem>
+            </LinkContainer>
+          </Nav>
+        </Navbar>
 
         {this.props.children}
       </div>
