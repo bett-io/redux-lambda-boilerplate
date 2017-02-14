@@ -12,7 +12,7 @@ import routes from '../modules/routes';
 const app = express();
 
 app.use(compression());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../dist/public')));
 
 app.get('*', (req, res) => {
   match({ routes: routes, location: req.url }, (err, redirect, props) => {

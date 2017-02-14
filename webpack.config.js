@@ -4,7 +4,7 @@ module.exports = {
   entry: './server/index.js',
 
   output: {
-    path: __dirname + '/public',
+    path: __dirname + '/dist/public',
     filename: 'bundle.js'
   },
 
