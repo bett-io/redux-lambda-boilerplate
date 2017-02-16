@@ -5,7 +5,7 @@ module.exports = {
 
   output: {
     path: __dirname + '/dist/public',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   module: {
@@ -13,17 +13,30 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
-        loaders: [ 'style-loader', 'css-loader' ]
-      }
-    ]
+        loaders: [ 'style-loader', 'css-loader' ],
+      },
+    ],
+    /*
+    // This will be add after deciding to use jsx or not.
+    rules: [
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true,
+        },
+      },
+    ],
+    */
   },
 
   plugins: process.env.NODE_ENV === 'production' ? [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
   ] : [],
-}
+};
