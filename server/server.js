@@ -19,15 +19,15 @@ app.get('*', (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else if (redirect) {
-      res.redirect(redirect.pathname + redirect.search)
+      res.redirect(redirect.pathname + redirect.search);
     } else if (props) {
       const appHtml = renderToString(<RouterContext {...props}/>);
       res.send(renderPage(appHtml));
     } else {
-      res.status(404).send('Not Found')
+      res.status(404).send('Not Found');
     }
   });
-})
+});
 
 function renderPage(appHtml) {
   return `
@@ -41,7 +41,7 @@ function renderPage(appHtml) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
     <div id=app>${appHtml}</div>
     <script src="/bundle.js"></script>
-  `
+  `;
 }
 
 const PORT = process.env.PORT || 8080;

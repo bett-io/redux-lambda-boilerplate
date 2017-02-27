@@ -1,6 +1,6 @@
-import React from 'react'
-import NavLink from './NavLink'
-import { browserHistory } from 'react-router'
+import React from 'react';
+import NavLink from './NavLink';
+import { browserHistory } from 'react-router';
 
 class Repos extends React.Component {
   handleSubmit(event) {
@@ -10,7 +10,7 @@ class Repos extends React.Component {
     const path = `/repos/${userName}/${repo}`;
 
     browserHistory.push(path);
-  };
+  }
 
   render() {
     return (
@@ -32,8 +32,9 @@ class Repos extends React.Component {
 
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
 export default Repos;
+
