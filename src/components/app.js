@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from 'react';
+import { Link } from 'react-router';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -28,8 +28,9 @@ class App extends React.Component {
 
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
 export default App;
+

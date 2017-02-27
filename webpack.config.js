@@ -9,7 +9,15 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true,
+        },
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -20,19 +28,6 @@ module.exports = {
         loaders: [ 'style-loader', 'css-loader' ],
       },
     ],
-    /*
-    // This will be add after deciding to use jsx or not.
-    rules: [
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true,
-        },
-      },
-    ],
-    */
   },
 
   plugins: process.env.NODE_ENV === 'production' ? [
