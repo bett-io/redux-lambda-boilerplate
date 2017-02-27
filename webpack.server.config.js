@@ -1,12 +1,12 @@
 var fs = require('fs');
-var path = require('path')
+var path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'server/server.js'),
 
   output: {
     path: __dirname + '/dist',
-    filename: 'server.bundle.js'
+    filename: 'server.bundle.js',
   },
 
   target: 'node',
@@ -20,7 +20,7 @@ module.exports = {
 
   node: {
     __filename: true,
-    __dirname: true
+    __dirname: true,
   },
 
   module: {
@@ -28,8 +28,8 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
-  }
-}
+        loader: 'babel-loader',
+      },
+    ],
+  },
+};
