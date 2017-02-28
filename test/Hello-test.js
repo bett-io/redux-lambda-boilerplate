@@ -7,4 +7,7 @@ describe('<Hello />', () => {
   it('renders "hello world" string', function() {
     expect(shallow(<Hello />).contains(<div>hello world</div>)).to.equal(true);
   });
+  it('contains a link to /about', function() {
+    expect(shallow(<Hello />).contains(<a href="/about">about</a>)).to.equal(true);
+  });
 });
