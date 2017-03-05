@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'server/server.js'),
+  entry: path.resolve(__dirname, 'server/lambda.js'),
 
   output: {
     path: __dirname + '/dist',

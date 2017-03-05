@@ -44,7 +44,5 @@ function renderPage(appHtml) {
   `;
 }
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log('Production Express server running at localhost:' + PORT);
-});
+// Export your express server so you can import it in the lambda function.
+module.exports = app
