@@ -10,7 +10,7 @@ There are three ways to run **helloworld-lambda-web**; dev, standalone and lambd
 npm run start:dev
 ```
 
-This mode runs **helloworld-lambda-web** on webpack-dev-server. You can get the benefit of hot module repleacement from webpack-dev-server. But note that only client part of **helloworld-lambda-web** is used in this mode. The files under the server directory are not used at all in this mode. You would also notice that react server rendering also doesn't work in this mode because it doesn't use server codes.
+This mode runs **helloworld-lambda-web** on webpack-dev-server. You can get the benefit of hot module replacement from webpack-dev-server. But note that only client part of **helloworld-lambda-web** is used in this mode. The files under the server directory are not used at all in this mode. You would also notice that react server rendering also doesn't work in this mode because it doesn't use server codes.
 
 ## standalone
 ```
