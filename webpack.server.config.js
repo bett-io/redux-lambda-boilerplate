@@ -6,7 +6,8 @@ module.exports = {
 
   output: {
     path: __dirname + '/dist',
-    filename: 'server.bundle.js',
+    libraryTarget: 'commonjs2',
+    filename: 'lambda.js',
   },
 
   target: 'node',
