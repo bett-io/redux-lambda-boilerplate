@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/.setup.js test/**/*-test.js",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "webpack-dev-server --config webpack.client.config.js --inline --content-base ./devserver/ --history-api-fallback",
+    "start": "webpack-dev-server --config webpack.client.config.js --inline --content-base ./devserver/ --history-api-fallback",
     "start:standalone": "npm run build:standalone && node ./standalone/standalone.bundle.js",
     "build:client": "webpack --config webpack.client.config.js",
     "build:server": "webpack --config webpack.server.config.js",
