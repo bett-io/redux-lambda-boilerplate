@@ -1,7 +1,6 @@
 'use strict';
 
 var express = require('express');
-var compression = require('compression');
 var path = require('path');
 
 import React from 'react';
@@ -11,7 +10,6 @@ import routes from '../modules/routes';
 
 const app = express();
 
-app.use(compression());
 app.use(express.static(path.join(__dirname, './public')));
 
 app.get('*', (req, res) => {
