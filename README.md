@@ -2,6 +2,13 @@
 
 react, react-router, react-bootstrap, webpack, babel, eslint, mocha, chai, enzyme
 
+# Installing dependencies
+Once you have the application files cloned, just go into the application directory and run command:
+```
+npm install
+```
+to download project dependencies.
+
 # dev, standalone and lambda
 There are three ways to run **helloworld-lambda-web**; dev, standalone and lambda.
 
