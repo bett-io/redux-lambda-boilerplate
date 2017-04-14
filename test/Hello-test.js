@@ -1,6 +1,6 @@
 import React from 'react';
 import { expect } from 'chai';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import Hello from '../src/components/Hello';
 
 describe('<Hello />', () => {

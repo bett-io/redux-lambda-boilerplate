@@ -43,4 +43,4 @@ function renderPage(appHtml) {
 }
 
 // Export your express server so you can import it in the lambda function.
-module.exports = app
+module.exports = app;
