@@ -17,7 +17,8 @@
     "lint": "eslint . --cache",
     "deploy:upload": "./scripts/upload-lambda.sh",
     "deploy:publish": "./scripts/publish-version.sh",
-    "deploy": "npm run deploy:upload && npm run deploy:publish"
+    "deploy": "npm run deploy:upload && npm run deploy:publish",
+    "belazy": "npm run build && npm run zip && npm run deploy"
   },
   "author": "",
   "dependencies": {
