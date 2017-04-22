@@ -14,7 +14,10 @@
     "build:standalone:server": "webpack --config webpack.standalone.server.config.js",
     "build:standalone": "npm run build:standalone:client && npm run build:standalone:server",
     "zip": "cp package.json ./dist/ && cd ./dist && npm install --production &&  zip -r ../dist.zip *",
-    "lint": "eslint . --cache"
+    "lint": "eslint . --cache",
+    "deploy:upload": "./scripts/upload-lambda.sh",
+    "deploy:publish": "./scripts/publish-version.sh",
+    "deploy": "npm run deploy:upload && npm run deploy:publish"
   },
   "author": "",
   "dependencies": {
