@@ -23,7 +23,7 @@ class FBLoginButton extends React.Component {
   componentDidMount() {
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '1876770209237119',
+        appId      : this.props.appId,
         cookie     : true,  // enable cookies to allow the server to access
                             // the session
         xfbml      : true,  // parse social plugins on this page
