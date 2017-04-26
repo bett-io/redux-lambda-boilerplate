@@ -4,6 +4,7 @@ import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import FBLoginButton from './FBLoginButton';
 import socialConfig from '../../social.config.json';
+import LoginNavItemContainer from '../containers/LoginNavItemContainer';
 
 class App extends React.Component {
   render() {
@@ -25,6 +26,9 @@ class App extends React.Component {
             <LinkContainer to="/hello">
               <NavItem eventKey={3}>Hello</NavItem>
             </LinkContainer>
+          </Nav>
+          <Nav pullRight>
+            <LoginNavItemContainer/>
           </Nav>
           <FBLoginButton appId={socialConfig.facebook.appId}>FBLoginButton</FBLoginButton>
         </Navbar>
