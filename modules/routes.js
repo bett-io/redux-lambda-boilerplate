@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from '../src/components/App';
+import App from '../src/containers/App';
 import Home from '../src/components/Home';
 import Repos from '../src/components/Repos';
 import Repo from '../src/components/Repo';

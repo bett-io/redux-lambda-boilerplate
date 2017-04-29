@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import FBLoginButton from './FBLoginButton';
+import FBLoginButton from '../components/FBLoginButton';
 import socialConfig from '../../social.config.json';
-import LoginNavItemContainer from '../containers/LoginNavItemContainer';
+import LoginNavItemContainer from './LoginNavItemContainer';
 
 class App extends React.Component {
   render() {
