@@ -1,5 +1,11 @@
 var webpack = require('webpack');
 
+var nodeEnvPath = 'devo';
+
+if (process.env.NODE_ENV === 'production') {
+  nodeEnvPath = 'prod';
+}
+
 module.exports = {
   entry: './src/index.js',
 
@@ -25,6 +31,12 @@ module.exports = {
         loaders: [ 'style-loader', 'css-loader' ],
       },
     ],
+  },
+
+  resolve: {
+    alias: {
+      'social.config.json': __dirname + '/social.config.' + nodeEnvPath + '.json'
+    }
   },
 
   plugins: process.env.NODE_ENV === 'production' ? [

@@ -1,6 +1,12 @@
 var fs = require('fs');
 var path = require('path');
 
+var nodeEnvPath = 'devo';
+
+if (process.env.NODE_ENV === 'production') {
+  nodeEnvPath = 'prod';
+}
+
 module.exports = {
   entry: path.resolve(__dirname, 'server/lambda.js'),
 
@@ -32,5 +38,11 @@ module.exports = {
         loader: 'babel-loader',
       },
     ],
+  },
+
+  resolve: {
+    alias: {
+      'social.config.json': __dirname + '/social.config.' + nodeEnvPath + '.json'
+    }
   },
 };

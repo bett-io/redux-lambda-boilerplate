@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setAuthToken } from '../actions';
 import LoginNavItem from '../components/LoginNavItem';
-import socialConfig from '../../social.config.json';
+import socialConfig from 'social.config.json';
 
 class Wrapper extends React.Component {
   componentDidMount() {
