@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import App from '../src/components/App';
+import App from '../src/containers/App';
 
 describe('<App />', () => {
   it('contains 3 <NavItem />s', function() {
