@@ -8,10 +8,9 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from '../modules/routes';
 import { Provider } from 'react-redux';
-import reducer from '../src/reducers'
-import { createStore } from 'redux';
+import createReduxStore from '../modules/store';
 
-let store = createStore(reducer);
+const store = createReduxStore({});
 
 const app = express();
 
