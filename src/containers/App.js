@@ -3,8 +3,14 @@ import { Link } from 'react-router';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import LoginNavItemContainer from './LoginNavItemContainer';
+import { connect } from 'react-redux';
+import { initializeApp } from '../actions';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(initializeApp());
+  }
+
   render() {
     return (
       <div>
@@ -36,4 +42,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(null, null)(App); // To use this.props.dispatch
