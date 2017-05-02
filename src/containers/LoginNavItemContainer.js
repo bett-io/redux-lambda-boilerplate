@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { setAuthToken } from '../actions';
+import { authTokenChanged } from '../actions';
 import LoginNavItem from '../components/LoginNavItem';
 import socialConfig from 'social.config.json';
 
@@ -19,7 +19,7 @@ class Wrapper extends React.Component {
 const statusChangeCallback = (dispatch, response) => {
   if (response.status === 'connected') {
     FB.api('/me', function(response) {
-      dispatch(setAuthToken(response.id));
+      dispatch(authTokenChanged(response.id));
     });
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.
@@ -83,7 +83,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onClickLogout: () => {
       FB.logout(() => {
-        dispatch(setAuthToken(''));
+        dispatch(authTokenChanged(''));
       });
     },
   };
