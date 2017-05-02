@@ -2,15 +2,17 @@
 
 import socialConfig from 'social.config.json';
 
-const getAccessToken = (callback) => {
+const getAccessToken = () => new Promise((resolve, reject) => {
   FB.getLoginStatus((response) => {
     if (response.status === 'connected') {
-      callback(response.authResponse.accessToken);
+      resolve(response.authResponse.accessToken);
+    } else {
+      reject();
     }
   });
-};
+});
 
-const initialize = (callback) => {
+const initialize = () => new Promise((resolve) => {
   window.fbAsyncInit = function() {
     FB.init({
       appId: socialConfig.facebook.appId,
@@ -19,7 +21,7 @@ const initialize = (callback) => {
       version: 'v2.8',
     });
 
-    getAccessToken(callback);
+    getAccessToken().then(resolve);
   };
 
   // Load the SDK asynchronously
@@ -30,17 +32,17 @@ const initialize = (callback) => {
     js.src = '//connect.facebook.net/en_US/sdk.js';
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-};
+});
 
-const login = (callback) => {
+const login = () => new Promise((resolve) => {
   FB.login(() => {
-    getAccessToken(callback);
+    getAccessToken().then(resolve);
   });
-};
+});
 
-const logout = (callback) => {
-  FB.logout(callback);
-};
+const logout = () => new Promise((resolve) => {
+  FB.logout(resolve);
+});
 
 export default {
   initialize,

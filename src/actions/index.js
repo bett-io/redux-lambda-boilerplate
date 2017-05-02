@@ -7,26 +7,28 @@ export const authTokenChanged = (authToken) => ({
 
 export const initializeApp = () => {
   return (dispatch) => {
-    facebook.initialize(() => {
-      facebook.getAccessToken((accessToken) => {
+    facebook.initialize()
+      .then(facebook.getAccessToken)
+      .then((accessToken) => {
         dispatch(authTokenChanged(accessToken));
       });
-    });
   };
 };
 
 export const login = () => {
   return (dispatch) => {
-    facebook.login((accessToken) => {
-      dispatch(authTokenChanged(accessToken));
-    });
+    facebook.login()
+      .then((accessToken) => {
+        dispatch(authTokenChanged(accessToken));
+      });
   };
 };
 
 export const logout = () => {
   return (dispatch) => {
-    facebook.logout(() => {
-      dispatch(authTokenChanged(''));
-    });
+    facebook.logout()
+      .then(() => {
+        dispatch(authTokenChanged(''));
+      });
   };
 };
