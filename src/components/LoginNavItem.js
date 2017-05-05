@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { NavItem } from 'react-bootstrap';
 
-const Login = ({ isLogin, onClickLogin, onClickLogout }) => {
-  if (isLogin) {
+const Login = ({ isLoggedIn, onClickLogin, onClickLogout }) => {
+  if (isLoggedIn) {
     return <NavItem href="#" onClick={e => {
       e.preventDefault();
       onClickLogout();
@@ -20,7 +20,7 @@ const Login = ({ isLogin, onClickLogin, onClickLogout }) => {
 };
 
 Login.propTypes = {
-  isLogin: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   onClickLogin: PropTypes.func.isRequired,
   onClickLogout: PropTypes.func.isRequired,
 };

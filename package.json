@@ -22,6 +22,7 @@
   },
   "author": "",
   "dependencies": {
+    "aws-sdk": "^2.49.0",
     "aws-serverless-express": "^2.1.3",
     "express": "^4.14.1",
     "react": "^15.4.2",
