@@ -7,7 +7,7 @@ which aws || { echo 'aws-cli(https://aws.amazon.com/cli/) have to be installed f
 which jq || { echo 'jq(https://stedolan.github.io/jq/) have to be installed first'; exit 1; }
 
 script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-aws_config="$script_dir/../aws.config.json"
+aws_config="$script_dir/../config/aws.config.prod.json"
 lambda_name=`jq -r '.lambda.function_name' "$aws_config"`
 git_hash=`git rev-parse HEAD`
 

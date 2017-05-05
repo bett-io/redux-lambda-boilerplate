@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk';
-import awsConfig from '../../config/aws.config.json';
+import awsConfig from 'aws.config.json';
 
 const facebookCredName = 'graph.facebook.com';
 
