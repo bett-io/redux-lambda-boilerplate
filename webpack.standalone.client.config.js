@@ -35,7 +35,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'social.config.json': __dirname + '/social.config.' + nodeEnvPath + '.json'
+      'social.config.json': __dirname + '/config/social.config.' + nodeEnvPath + '.json'
     }
   },
 
