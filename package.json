@@ -13,12 +13,10 @@
     "build:standalone:client": "webpack --config webpack.standalone.client.config.js",
     "build:standalone:server": "webpack --config webpack.standalone.server.config.js",
     "build:standalone": "npm run build:standalone:client && npm run build:standalone:server",
-    "zip": "cp package.json ./dist/ && cd ./dist && npm install --production &&  zip -r ../dist.zip *",
+    "dist": "cp package.json ./dist/ && cd ./dist && npm install --production",
     "lint": "eslint . --cache",
-    "deploy:upload": "./scripts/upload-lambda.sh",
-    "deploy:publish": "./scripts/publish-version.sh",
-    "deploy": "npm run deploy:upload && npm run deploy:publish",
-    "belazy": "npm run build && npm run zip && npm run deploy"
+    "deploy": "node-lambda deploy -p --description `git rev-parse HEAD` --prebuiltDirectory dist",
+    "belazy": "npm run lint && npm run build && npm run dist && npm run deploy"
   },
   "author": "",
   "dependencies": {
@@ -49,6 +47,7 @@
     "eslint-plugin-react": "^6.10.0",
     "if-env": "^1.0.0",
     "mocha": "^3.2.0",
+    "node-lambda": "^0.9.0",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
     "style-loader": "^0.16.1",

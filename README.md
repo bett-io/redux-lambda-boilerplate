@@ -33,6 +33,13 @@ npm run build
 
 This mode builds and bundles **helloworld-lambda-web** to run on AWS Lambda. You can upload /dist directory to your Lambda environment. **helloworld-lambda-web** uses [aws-serverless-express](https://github.com/awslabs/aws-serverless-express) to run express server on Lambda.
 
+# Deployment to lambda
+```
+AWS_ACCESS_KEY_ID=[your AWS access key id] AWS_SECRET_ACCESS_KEY=[your AWS secret access key] npm run belazy
+```
+
+Or you can store those two environment variables to deploy.env file. Refer to node-lambda for further information.
+
 # TODO
 - https://github.com/motdotla/node-lambda (or other lambda deployment tool)
 - Integrate with CI tool (https://github.com/integrations/feature/continuous-integration)
