@@ -6,7 +6,7 @@ import LoginNavItemContainer from './LoginNavItemContainer';
 import { connect } from 'react-redux';
 import { initializeApp } from '../actions';
 
-class App extends React.Component {
+export class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(initializeApp());
   }
