@@ -4,3 +4,4 @@ dist.zip
 standalone/
 npm-debug.log
 .eslintcache
+.tmp/
