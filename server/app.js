@@ -16,7 +16,7 @@ import session from 'express-session';
 const store = createReduxStore({});
 
 const app = express();
-const DynamoDBStore = connectDynamoDb({session: session});
+const DynamoDBStore = connectDynamoDb({session});
 
 const sessionOption = {
   resave: false,
@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
     writeCapacityUnits: 2,
   };
 
-  sessionOption['store'] = new DynamoDBStore(dynamoDBOptions);
+  sessionOption.store = new DynamoDBStore(dynamoDBOptions);
 } else {
   console.log('session will be stored in memory');
 }
