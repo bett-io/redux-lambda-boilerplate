@@ -3,17 +3,50 @@
 var express = require('express');
 var path = require('path');
 
+import awsConfig from 'aws.config.json';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from '../modules/routes';
 import { Provider } from 'react-redux';
+import connectDynamoDb from 'connect-dynamodb';
 import createReduxStore from '../modules/store';
+import session from 'express-session';
 
 const store = createReduxStore({});
 
 const app = express();
+const DynamoDBStore = connectDynamoDb({session});
 
+const sessionOption = {
+  resave: false,
+  saveUninitialized: true,
+  secret: 'session secret',
+};
+
+if (process.env.NODE_ENV === 'production') {
+  // Use DynamoDB only in production. Session will be stored in memory in non-production.
+
+  const dynamoDBOptions = {
+    // Optional DynamoDB table name, defaults to 'sessions'
+    table: 'hello_session',
+
+    // Optional JSON object of AWS credentials and configuration
+    AWSConfigJSON: {
+      region: awsConfig.common.region,
+    },
+
+    // Optional ProvisionedThroughput params, defaults to 5
+    readCapacityUnits: 2,
+    writeCapacityUnits: 2,
+  };
+
+  sessionOption.store = new DynamoDBStore(dynamoDBOptions);
+} else {
+  console.log('session will be stored in memory');
+}
+
+app.use(session(sessionOption));
 app.use(express.static(path.join(__dirname, './public')));
 
 app.get('*', (req, res) => {

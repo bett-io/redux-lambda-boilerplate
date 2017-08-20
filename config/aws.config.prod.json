@@ -4,5 +4,8 @@
   },
   "cognito": {
     "identity_pool_id": "us-west-2:a850fbb8-2356-4a0f-af2d-97fb2574524b"
+  },
+  "dynamodb": {
+    "session": "arn:aws:dynamodb:us-west-2:960280041249:table/hello_session"
   }
 }

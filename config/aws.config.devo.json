@@ -4,5 +4,7 @@
   },
   "cognito": {
     "identity_pool_id": "us-west-2:23a18e5e-7934-4746-b5dc-f89da30095f1"
+  },
+  "dynamodb": {
   }
 }
