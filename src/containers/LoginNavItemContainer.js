@@ -4,7 +4,8 @@ import LoginNavItem from '../components/LoginNavItem';
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.auth.isAuth,
+    isLoggedIn: !!state.user.uid,
+    userName: state.user.name,
   };
 };
 

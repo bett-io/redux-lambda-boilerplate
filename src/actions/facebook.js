@@ -13,6 +13,8 @@ const getAccessToken = () => new Promise((resolve) => {
 });
 
 const initialize = () => new Promise((resolve) => {
+  if (window.fbAsyncInit) return resolve();
+
   window.fbAsyncInit = function() {
     FB.init({
       appId: socialConfig.facebook.appId,
@@ -21,7 +23,7 @@ const initialize = () => new Promise((resolve) => {
       version: 'v2.8',
     });
 
-    getAccessToken().then(resolve);
+    resolve();
   };
 
   // Load the SDK asynchronously

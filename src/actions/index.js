@@ -1,29 +1,25 @@
-import cognito from './cognito';
 import facebook from './facebook';
 
-export const authUpdated = (auth) => ({
-  type: 'AUTH_UPDATED',
-  auth,
+export const userUpdated = (user) => ({
+  type: 'USER_UPDATED',
+  user,
 });
 
 export const initializeApp = () => {
-  return (dispatch) => {
-    facebook.initialize()
-      .then(facebook.getAccessToken)
-      .then((fbToken) => {
-        cognito.initialize(fbToken).then(() => {
-          dispatch(authUpdated({ isAuth: !!fbToken }));
-        });
-      });
+  return () => {
+    facebook.initialize();
   };
 };
 
 export const login = () => {
   return (dispatch) => {
     facebook.login()
-      .then(cognito.updateFbToken)
-      .then(() => {
-        dispatch(authUpdated({ isAuth: true }));
+      .then((fbToken) => {
+        dispatch(userUpdated({
+          uid: 1,
+          name: 'tester',
+          fbToken,
+        }));
       });
   };
 };
@@ -32,7 +28,11 @@ export const logout = () => {
   return (dispatch) => {
     facebook.logout()
       .then(() => {
-        dispatch(authUpdated({ isAuth: false }));
+        dispatch(userUpdated({
+          uid: 0,
+          name: '',
+          fbToken: 0,
+        }));
       });
   };
 };
