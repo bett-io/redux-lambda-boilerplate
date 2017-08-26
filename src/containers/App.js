@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import LoginNavItemContainer from './LoginNavItemContainer';
 import { connect } from 'react-redux';
 import { initializeApp } from '../actions';
+import Main from '../components/Main';
 
 export class App extends React.Component {
   componentDidMount() {
@@ -36,10 +37,15 @@ export class App extends React.Component {
           </Nav>
         </Navbar>
 
-        {this.props.children}
+        <Main/>
       </div>
     );
   }
 }
 
-export default connect(null, null)(App); // To use this.props.dispatch
+const connectedApp = connect(null, null)(App);  // To use this.props.dispatch
+
+// https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
+const connectedAppWithRouter = withRouter(connectedApp);
+
+export default connectedAppWithRouter;
