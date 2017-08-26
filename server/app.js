@@ -14,8 +14,6 @@ import session from 'express-session';
 
 import App from '../src/containers/App';
 
-const store = createReduxStore({});
-
 const app = express();
 const DynamoDBStore = connectDynamoDb({session});
 
@@ -53,6 +51,16 @@ app.use(express.static(path.join(__dirname, './public')));
 app.get('*', (req, res) => {
   const context = {};
 
+  // counter in session for demo
+  if (!req.session.counter) req.session.counter = 0
+  req.session.counter++;
+
+  const initialState = {
+    sessionCounter: { counter: req.session.counter }
+  };
+
+  const store = createReduxStore(initialState);
+
   const appHtml = renderToString(
     <Provider store={store}>
       <StaticRouter
@@ -66,13 +74,11 @@ app.get('*', (req, res) => {
   if (context.url) {
     res.redirect(302, context.url);
   } else {
-    res.send(renderPage(appHtml));
+    res.send(renderPage(appHtml, store.getState()));
   }
 });
 
-const initialState = store.getState();
-
-function renderPage(appHtml) {
+function renderPage(appHtml, initialState) {
   return `
     <!doctype html public="storage">
     <html>

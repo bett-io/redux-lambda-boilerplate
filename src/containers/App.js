@@ -1,10 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { initializeApp } from '../actions';
+import connectWithRouter from '../../modules/connectWithRouter';
 
 import Header from '../components/Header';
-import Main from '../components/Main';
+import MainContainer from '../containers/MainContainer';
 
 export class App extends React.Component {
   componentDidMount() {
@@ -15,15 +14,12 @@ export class App extends React.Component {
     return (
       <div>
         <Header/>
-        <Main/>
+        <MainContainer/>
       </div>
     );
   }
 }
 
-const connectedApp = connect(null, null)(App);  // To use this.props.dispatch
+const connectedApp = connectWithRouter(null, null)(App);  // To use this.props.dispatch
 
-// https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
-const connectedAppWithRouter = withRouter(connectedApp);
-
-export default connectedAppWithRouter;
+export default connectedApp;

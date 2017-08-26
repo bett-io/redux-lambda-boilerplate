@@ -9,8 +9,14 @@ function auth(state = { isAuth: false }, action) {
   }
 }
 
+function sessionCounter(state = { counter: 0 }) {
+  // This value never changes from initial value which is given from server
+  return state;
+}
+
 const reducer = combineReducers({
   auth,
+  sessionCounter,
 });
 
 export default reducer;

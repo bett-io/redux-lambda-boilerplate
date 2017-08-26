@@ -5,11 +5,13 @@ import Repos from './Repos';
 import About from './About';
 import Hello from './Hello';
 
-import { Link } from 'react-router-dom';
-
-const Main = () => (
+const Main = ({ sessionCounter }) => (
   <div>
-    <Link to="/hello">Home</Link>
+    <div>
+      <strong>Session counter: {sessionCounter.counter}</strong>
+      <br/>
+      (Note that this value is incresed only when server side rendering requested)
+    </div>
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route path="/repos" component={Repos}/>
