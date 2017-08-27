@@ -6,7 +6,7 @@ var path = require('path');
 import awsConfig from 'aws.config.json';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { RouterContext, StaticRouter } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import connectDynamoDb from 'connect-dynamodb';
 import createReduxStore from '../modules/store';
@@ -52,11 +52,11 @@ app.get('*', (req, res) => {
   const context = {};
 
   // counter in session for demo
-  if (!req.session.counter) req.session.counter = 0
+  if (!req.session.counter) req.session.counter = 0;
   req.session.counter++;
 
   const initialState = {
-    sessionCounter: { counter: req.session.counter }
+    sessionCounter: { counter: req.session.counter },
   };
 
   const store = createReduxStore(initialState);
@@ -69,7 +69,7 @@ app.get('*', (req, res) => {
         <App/>
       </StaticRouter>
     </Provider>
-  )
+  );
 
   if (context.url) {
     res.redirect(302, context.url);
