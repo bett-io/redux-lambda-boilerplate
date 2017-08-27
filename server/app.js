@@ -12,14 +12,14 @@ import { Provider } from 'react-redux';
 import createReduxStore from '../modules/store';
 
 import auth from './auth';
-import sessionUtil from './sessionUtil';
+import session from './libs/session';
 
 import App from '../src/containers/App';
 
 const app = express();
 
 app.use(bodyParser.json()); // for parsing POST body
-app.use(sessionUtil.createSessionMiddleware(awsConfig.common.region));
+app.use(session.createSessionMiddleware(awsConfig.common.region));
 app.use(express.static(path.join(__dirname, './public')));
 
 app.get('*', (req, res) => {
@@ -31,7 +31,7 @@ app.get('*', (req, res) => {
   if (!req.session.counter) req.session.counter = 0;
   req.session.counter++;
 
-  const initialState = sessionUtil.createInitialReduxState(req.session);
+  const initialState = session.createInitialReduxState(req.session);
   const store = createReduxStore(initialState);
 
   const appHtml = renderToString(
