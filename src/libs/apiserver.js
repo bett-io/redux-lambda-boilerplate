@@ -18,7 +18,18 @@ const signout = async () => {
   return response;
 };
 
+const updateSessionState = async (state) => {
+  const response = await axios.post('/sessionState', {
+    state,
+  });
+
+  console.log({ function: 'apiserver.updateSessionState', response });
+
+  return response;
+};
+
 export default {
   signin,
   signout,
+  updateSessionState,
 };
