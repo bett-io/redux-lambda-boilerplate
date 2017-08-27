@@ -1,4 +1,5 @@
 import facebook from './facebook';
+import apiserver from '../libs/apiserver';
 
 export const userUpdated = (user) => ({
   type: 'USER_UPDATED',
@@ -14,11 +15,12 @@ export const initializeApp = () => {
 export const login = () => {
   return (dispatch) => {
     facebook.login()
-      .then((fbToken) => {
+      .then(apiserver.signin)
+      .then((response) => {
         dispatch(userUpdated({
-          uid: 1,
-          name: 'tester',
-          fbToken,
+          uid: response.data.uid,
+          name: response.data.name,
+          fbToken: response.data.fbToken,
         }));
       });
   };
@@ -26,7 +28,7 @@ export const login = () => {
 
 export const logout = () => {
   return (dispatch) => {
-    facebook.logout()
+    apiserver.signout()
       .then(() => {
         dispatch(userUpdated({
           uid: 0,
