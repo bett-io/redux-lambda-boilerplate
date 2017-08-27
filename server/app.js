@@ -4,6 +4,7 @@ var express = require('express');
 var path = require('path');
 
 import awsConfig from 'aws.config.json';
+import bodyParser from 'body-parser';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
@@ -11,6 +12,9 @@ import { Provider } from 'react-redux';
 import connectDynamoDb from 'connect-dynamodb';
 import createReduxStore from '../modules/store';
 import session from 'express-session';
+
+import auth from './auth';
+import sessionUtil from './sessionUtil';
 
 import App from '../src/containers/App';
 
@@ -45,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
   console.log('session will be stored in memory');
 }
 
+app.use(bodyParser.json()); // for parsing POST body
 app.use(session(sessionOption));
 app.use(express.static(path.join(__dirname, './public')));
 
@@ -55,10 +60,7 @@ app.get('*', (req, res) => {
   if (!req.session.counter) req.session.counter = 0;
   req.session.counter++;
 
-  const initialState = {
-    sessionCounter: { counter: req.session.counter },
-  };
-
+  const initialState = sessionUtil.createInitialReduxState(req.session);
   const store = createReduxStore(initialState);
 
   const appHtml = renderToString(
@@ -76,6 +78,14 @@ app.get('*', (req, res) => {
   } else {
     res.send(renderPage(appHtml, store.getState()));
   }
+});
+
+app.post('/signin', (req, res) => {
+  res.send(auth.signin(req, res));
+});
+
+app.post('/signout', (req, res) => {
+  res.send(auth.signout(req, res));
 });
 
 function renderPage(appHtml, initialState) {
