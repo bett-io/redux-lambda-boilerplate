@@ -20,6 +20,7 @@ export const login = () => {
         dispatch(userUpdated({
           uid: response.data.uid,
           name: response.data.name,
+          pictureUrl: response.data.picture,
           fbToken: response.data.fbToken,
         }));
       });
@@ -33,6 +34,7 @@ export const logout = () => {
         dispatch(userUpdated({
           uid: 0,
           name: '',
+          pictureUrl: '',
           fbToken: 0,
         }));
       });

@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     isLoggedIn: !!state.user.uid,
     userName: state.user.name,
+    pictureUrl: state.user.pictureUrl,
   };
 };
 

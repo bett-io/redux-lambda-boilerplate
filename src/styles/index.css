@@ -1,3 +1,16 @@
 .active {
   color: green;
 }
+
+img.thumbnail-image {
+  height: 33;
+  width: 33;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+a#basic-nav-dropdown {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
