@@ -12,31 +12,25 @@ export const initializeApp = () => {
   };
 };
 
-export const login = () => {
-  return (dispatch) => {
-    facebook.login()
-      .then(apiserver.signin)
-      .then((response) => {
-        dispatch(userUpdated({
-          uid: response.data.uid,
-          name: response.data.name,
-          pictureUrl: response.data.picture,
-          fbToken: response.data.fbToken,
-        }));
-      });
-  };
+export const login = () => async (dispatch) => {
+  const fbToken = await facebook.login();
+  const response = await apiserver.signin(fbToken);
+
+  dispatch(userUpdated({
+    uid: response.data.uid,
+    name: response.data.name,
+    pictureUrl: response.data.picture,
+    fbToken: response.data.fbToken,
+  }));
 };
 
-export const logout = () => {
-  return (dispatch) => {
-    apiserver.signout()
-      .then(() => {
-        dispatch(userUpdated({
-          uid: 0,
-          name: '',
-          pictureUrl: '',
-          fbToken: 0,
-        }));
-      });
-  };
+export const logout = () => async (dispatch) => {
+  await apiserver.signout();
+
+  dispatch(userUpdated({
+    uid: 0,
+    name: '',
+    pictureUrl: '',
+    fbToken: 0,
+  }));
 };
