@@ -5,10 +5,11 @@ const signin = (fbToken) => new Promise((resolve, reject) => {
     fbToken,
   })
   .then(function(response) {
+    console.log(response);
     resolve(response);
   })
   .catch(function(error) {
-    console.error({ function: 'signin', error });
+    console.log(error);
     reject(error);
   });
 });
@@ -16,10 +17,11 @@ const signin = (fbToken) => new Promise((resolve, reject) => {
 const signout = () => new Promise((resolve, reject) => {
   axios.post('/signout', {})
   .then(function(response) {
+    console.log(response);
     resolve(response);
   })
   .catch(function(error) {
-    console.error({ function: 'signout', error });
+    console.log(error);
     reject(error);
   });
 });
