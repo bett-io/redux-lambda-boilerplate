@@ -54,7 +54,7 @@ app.get('*', (req, res) => {
 app.post('/signin', (req, res) => {
   console.log({ function:'app.post', req: { url: req.url } });
 
-  res.send(auth.signin(req, res));
+  auth.signin(req).then((result) => res.send(result));
 });
 
 app.post('/signout', (req, res) => {

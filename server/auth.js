@@ -1,9 +1,19 @@
-const signin = (req) => {
+import facebook from './libs/facebook';
+
+const signin = async (req) => {
+  const fbToken = req.body.fbToken;
+
+  console.log({ function: 'auth.signin', fbToken });
+
+  const fbUserInfo = await facebook.getUserInfo(fbToken);
+  console.log({ function: 'auth.signin', fbUserInfo });
+
   req.session.fbToken = req.body.fbToken;
 
   return {
-    uid: 1,
-    name: 'Tester Name',
+    uid: fbUserInfo.id,
+    name: fbUserInfo.name,
+    picture: fbUserInfo.picture,
     fbToken: req.body.fbToken,
   };
 };
