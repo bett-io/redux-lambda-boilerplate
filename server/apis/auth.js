@@ -1,4 +1,4 @@
-import facebook from './libs/facebook';
+import facebook from '../libs/facebook';
 
 const signin = async (req) => {
   const fbToken = req.body.fbToken;

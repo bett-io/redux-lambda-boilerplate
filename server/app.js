@@ -11,7 +11,7 @@ import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import createReduxStore from '../modules/store';
 
-import auth from './auth';
+import auth from './apis/auth';
 import session from './libs/session';
 
 import App from '../src/containers/App';
