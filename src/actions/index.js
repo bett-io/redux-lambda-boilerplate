@@ -19,7 +19,7 @@ export const login = () => async (dispatch) => {
   dispatch(userUpdated({
     uid: response.data.uid,
     name: response.data.name,
-    pictureUrl: response.data.picture,
+    pictureUrl: response.data.pictureUrl,
     fbToken: response.data.fbToken,
   }));
 };

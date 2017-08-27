@@ -8,10 +8,11 @@ const createInitialReduxState = (session) => {
     },
   };
 
-  if (session.fbToken) {
+  if (session.uid && session.name && session.pictureUrl && session.fbToken) {
     state.user = {
-      uid: 1,
-      name: 'Tester Name',
+      uid: session.uid,
+      name: session.name,
+      pictureUrl: session.pictureUrl,
       fbToken: session.fbToken,
     };
   }
@@ -55,7 +56,15 @@ const createSessionMiddleware = (awsRegion) => {
   return session(sessionOption);
 };
 
+const updateAuthResult = (req, authResponse) => {
+  req.session.uid = authResponse.uid;
+  req.session.name = authResponse.name;
+  req.session.pictureUrl = authResponse.pictureUrl;
+  req.session.fbToken = authResponse.fbToken;
+};
+
 module.exports = {
   createInitialReduxState,
   createSessionMiddleware,
+  updateAuthResult,
 };
