@@ -6,12 +6,13 @@ var path = require('path');
 import awsConfig from 'aws.config.json';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
-import routes from '../modules/routes';
+import { RouterContext, StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import connectDynamoDb from 'connect-dynamodb';
 import createReduxStore from '../modules/store';
 import session from 'express-session';
+
+import App from '../src/containers/App';
 
 const store = createReduxStore({});
 
@@ -50,22 +51,23 @@ app.use(session(sessionOption));
 app.use(express.static(path.join(__dirname, './public')));
 
 app.get('*', (req, res) => {
-  match({ routes: routes, location: req.url }, (err, redirect, props) => {
-    if (err) {
-      res.status(500).send(err.message);
-    } else if (redirect) {
-      res.redirect(redirect.pathname + redirect.search);
-    } else if (props) {
-      const appHtml = renderToString(
-        <Provider store={store}>
-          <RouterContext {...props}/>
-        </Provider>
-      );
-      res.send(renderPage(appHtml));
-    } else {
-      res.status(404).send('Not Found');
-    }
-  });
+  const context = {};
+
+  const appHtml = renderToString(
+    <Provider store={store}>
+      <StaticRouter
+        location={req.url}
+        context={context}>
+        <App/>
+      </StaticRouter>
+    </Provider>
+  )
+
+  if (context.url) {
+    res.redirect(302, context.url);
+  } else {
+    res.send(renderPage(appHtml));
+  }
 });
 
 const initialState = store.getState();
