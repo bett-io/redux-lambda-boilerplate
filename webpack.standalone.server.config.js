@@ -8,7 +8,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  entry: path.resolve(__dirname, 'server/standalone.js'),
+  entry: [
+    'babel-polyfill', // https://github.com/babel/babel-preset-env/issues/112
+    path.resolve(__dirname, 'server/standalone.js'),
+  ],
 
   output: {
     path: __dirname + '/standalone',

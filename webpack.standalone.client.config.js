@@ -7,7 +7,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    'babel-polyfill', // https://github.com/babel/babel-preset-env/issues/112
+    './src/index.js',
+  ],
 
   output: {
     path: __dirname + '/standalone/public',
