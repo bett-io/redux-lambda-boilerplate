@@ -3,6 +3,8 @@
     "region": "us-west-2"
   },
   "dynamodb": {
-    "session": "arn:aws:dynamodb:us-west-2:960280041249:table/hello_session"
+    "sessionTableName": "hello_session",
+    "userTableName": "hello_user",
+    "userIndexName": "fbid-index"
   }
 }

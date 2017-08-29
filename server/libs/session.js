@@ -1,3 +1,4 @@
+import { awsConfig } from '../../config';
 import connectDynamoDb from 'connect-dynamodb';
 import session from 'express-session';
 
@@ -22,7 +23,7 @@ const createInitialReduxState = (session) => {
   return state;
 };
 
-const createSessionMiddleware = (awsRegion) => {
+const createSessionMiddleware = () => {
   const sessionOption = {
     resave: false,
     saveUninitialized: true,
@@ -34,11 +35,11 @@ const createSessionMiddleware = (awsRegion) => {
 
     const dynamoDBOptions = {
       // Optional DynamoDB table name, defaults to 'sessions'
-      table: 'hello_session',
+      table: awsConfig.dynamodb.sessionTableName,
 
       // Optional JSON object of AWS credentials and configuration
       AWSConfigJSON: {
-        region: awsRegion,
+        region: awsConfig.common.region,
       },
 
       // Optional ProvisionedThroughput params, defaults to 5
