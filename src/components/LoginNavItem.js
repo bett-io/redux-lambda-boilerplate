@@ -20,16 +20,16 @@ const Login = ({ isLoggedIn, pictureUrl, onClickLogin, onClickLogout }) => {
         </MenuItem>
       </NavDropdown>
     );
-  } else {
-    return (
-      <NavItem href="#" onClick={e => {
-        e.preventDefault();
-        onClickLogin();
-      }}>
-        Login
-      </NavItem>
-    );
   }
+
+  return (
+    <NavItem href="#" onClick={e => {
+      e.preventDefault();
+      onClickLogin();
+    }}>
+      Login
+    </NavItem>
+  );
 };
 
 Login.propTypes = {
