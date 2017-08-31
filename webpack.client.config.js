@@ -1,6 +1,6 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-module.exports = {
+const config = {
   entry: [
     'babel-polyfill', // https://github.com/babel/babel-preset-env/issues/112
     './src/index.js',
@@ -30,8 +30,14 @@ module.exports = {
     ],
   },
 
-  plugins: process.env.NODE_ENV === 'production' ? [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
-  ] : [],
+  plugins: [],
 };
+
+module.exports = (env) => {
+  if (env === 'production') {
+    config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
+  }
+
+  return config;
+};
+
