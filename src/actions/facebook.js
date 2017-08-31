@@ -2,8 +2,6 @@
 
 import { socialConfig } from '../../config';
 
-console.log('socialConfig', socialConfig);
-
 const getAccessToken = () => new Promise((resolve) => {
   FB.getLoginStatus((response) => {
     if (response.status === 'connected') {
