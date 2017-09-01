@@ -1,11 +1,5 @@
-var fs = require('fs');
-var path = require('path');
-
-var nodeEnvPath = 'devo';
-
-if (process.env.NODE_ENV === 'production') {
-  nodeEnvPath = 'prod';
-}
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
   entry: [
@@ -41,12 +35,5 @@ module.exports = {
         loader: 'babel-loader',
       },
     ],
-  },
-
-  resolve: {
-    alias: {
-      'social.config.json': __dirname + '/config/social.config.' + nodeEnvPath + '.json',
-      'aws.config.json': __dirname + '/config/aws.config.' + nodeEnvPath + '.json',
-    },
   },
 };

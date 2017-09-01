@@ -1,6 +1,6 @@
 /*global FB*/
 
-import socialConfig from 'social.config.json';
+import { socialConfig } from '../../config';
 
 const getAccessToken = () => new Promise((resolve) => {
   FB.getLoginStatus((response) => {
@@ -52,3 +52,4 @@ export default {
   login,
   logout,
 };
+

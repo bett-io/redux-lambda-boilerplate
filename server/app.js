@@ -3,12 +3,13 @@
 var express = require('express');
 var path = require('path');
 
-import awsConfig from 'aws.config.json';
 import bodyParser from 'body-parser';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+
+import { awsConfig } from '../config';
 import createReduxStore from '../modules/store';
 
 import auth from './apis/auth';
