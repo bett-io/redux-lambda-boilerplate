@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import 'babel-polyfill';
 
 import React from 'react';
