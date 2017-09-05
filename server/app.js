@@ -1,7 +1,7 @@
 'use strict';
 
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
 
 import bodyParser from 'body-parser';
 import React from 'react';
