@@ -14,12 +14,12 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         enforce: 'pre',
         loader: 'eslint-loader',
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
@@ -28,6 +28,10 @@ const config = {
         loaders: ['style-loader', 'css-loader'],
       },
     ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 
   plugins: [],
