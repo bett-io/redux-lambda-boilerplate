@@ -46,7 +46,7 @@ const createSessionMiddleware = (awsRegion) => {
       writeCapacityUnits: 2,
     };
 
-    const DynamoDBStore = connectDynamoDb({session});
+    const DynamoDBStore = connectDynamoDb({ session });
 
     sessionOption.store = new DynamoDBStore(dynamoDBOptions);
   } else {
