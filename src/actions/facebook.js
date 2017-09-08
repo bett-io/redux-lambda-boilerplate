@@ -1,4 +1,4 @@
-/*global FB*/
+/* global FB */
 
 import { socialConfig } from '../../config';
 
@@ -15,7 +15,7 @@ const getAccessToken = () => new Promise((resolve) => {
 const initialize = () => new Promise((resolve) => {
   if (window.fbAsyncInit) return resolve();
 
-  window.fbAsyncInit = function() {
+  window.fbAsyncInit = function () {
     FB.init({
       appId: socialConfig.facebook.appId,
       cookie: true,
@@ -27,8 +27,8 @@ const initialize = () => new Promise((resolve) => {
   };
 
   // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
+  (function (d, s, id) {
+    let js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = '//connect.facebook.net/en_US/sdk.js';

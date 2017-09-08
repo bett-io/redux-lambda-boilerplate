@@ -18,14 +18,25 @@ module.exports = {
     "react"
   ],
   "rules": {
+    "array-bracket-spacing": ["error", "never"],
     "comma-dangle": ["error", "always-multiline"],
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["warn", "always"],
+    "no-multi-spaces": "error",
     "no-unused-vars": ["warn"],
     "no-console": 0,
+    "no-var": "error",
+    "object-curly-spacing": ["error", "always"],
+    "quotes": ["error", "single"],
+    "react/jsx-filename-extension": "error",
     "react/jsx-uses-react": "warn",
     "react/jsx-uses-vars": "warn",
+    "semi": ["warn", "always"],
+    "space-before-function-paren": ["error",{
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    "spaced-comment": "error",
   },
 };

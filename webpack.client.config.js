@@ -14,20 +14,24 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         enforce: 'pre',
         loader: 'eslint-loader',
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
       {
         test: /\.css$/,
-        loaders: [ 'style-loader', 'css-loader' ],
+        loaders: ['style-loader', 'css-loader'],
       },
     ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 
   plugins: [],

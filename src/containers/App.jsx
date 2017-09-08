@@ -20,6 +20,6 @@ export class App extends React.Component {
   }
 }
 
-const connectedApp = connectWithRouter(null, null)(App);  // To use this.props.dispatch
+const connectedApp = connectWithRouter(null, null)(App); // To use this.props.dispatch
 
 export default connectedApp;

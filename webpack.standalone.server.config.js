@@ -1,5 +1,5 @@
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
   entry: [
@@ -29,10 +29,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
     ],
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 };
