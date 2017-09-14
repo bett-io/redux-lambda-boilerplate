@@ -9,7 +9,6 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { awsConfig } from '../config';
 import createReduxStore from '../modules/store';
 
 import auth from './apis/auth';
@@ -17,10 +16,12 @@ import session from './libs/session';
 
 import App from '../src/containers/App';
 
+const file = 'server/app.js';
+
 const app = express();
 
 app.use(bodyParser.json()); // for parsing POST body
-app.use(session.createSessionMiddleware(awsConfig.common.region));
+app.use(session.createSessionMiddleware());
 app.use(express.static(path.join(__dirname, './public')));
 
 app.get('*', (req, res) => {
@@ -53,9 +54,14 @@ app.get('*', (req, res) => {
 });
 
 app.post('/signin', (req, res) => {
-  console.log({ function:'app.post', req: { url: req.url } });
+  console.log({ file, function:'post', req: { url: req.url } });
 
-  auth.signin(req).then((result) => res.send(result));
+  auth.signin(req)
+    .then((result) => res.send(result))
+    .catch((error) => {
+      console.log({ file, function: 'post', error });
+      res.status(403).send(error);
+    });
 });
 
 app.post('/signout', (req, res) => {
