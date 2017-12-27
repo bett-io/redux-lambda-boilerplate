@@ -1,7 +1,7 @@
 import facebook from './facebook';
 import apiserver from '../libs/apiserver';
 
-export const userUpdated = (user) => ({
+const userUpdated = user => ({
   type: 'USER_UPDATED',
   user,
 });
