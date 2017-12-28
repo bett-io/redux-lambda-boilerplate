@@ -4,8 +4,11 @@ import 'babel-polyfill';
 
 import React from 'react';
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Header from '../src/components/Header';
+
+configure({ adapter: new Adapter() });
 
 describe('<Header />', () => {
   it('contains 3 <NavItem />s', function () {
