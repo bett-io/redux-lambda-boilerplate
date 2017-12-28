@@ -4,7 +4,7 @@
   "description": "Helloworld on lambda for a web",
   "main": "index.js",
   "scripts": {
-    "test": "mocha-webpack --webpack-config webpack.test.config.js test",
+    "test": "jest",
     "start": "webpack-dev-server --config webpack.client.config.js --inline --content-base ./devserver/ --history-api-fallback",
     "start:standalone": "npm run build:standalone && node ./standalone/standalone.bundle.js",
     "build:client": "webpack --env production -p --config webpack.client.config.js",
@@ -19,6 +19,12 @@
     "belazy": "npm run lint && npm run build && npm run dist && npm run deploy"
   },
   "author": "",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js"
+  },
   "dependencies": {
     "aws-sdk": "^2.49.0",
     "aws-serverless-express": "^3.0.2",
@@ -45,17 +51,16 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.22.0",
-    "chai": "^4.1.2",
     "core-js": "^2.5.0",
     "css-loader": "^0.28.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
     "eslint": "^4.14.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-react": "^7.5.1",
     "if-env": "^1.0.0",
-    "mocha": "^4.0.1",
-    "mocha-webpack": "^1.0.1",
+    "jest": "^22.0.4",
     "node-lambda": "^0.11.5",
     "react-test-renderer": "^16.2.0",
     "style-loader": "^0.19.1",

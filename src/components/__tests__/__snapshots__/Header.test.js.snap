@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should pass snapshot check 1`] = `
+<Uncontrolled(Navbar)
+  bsStyle="default"
+>
+  <NavbarHeader>
+    <NavbarBrand>
+      <Link
+        replace={false}
+        to="/"
+      >
+        Home
+      </Link>
+    </NavbarBrand>
+  </NavbarHeader>
+  <Nav
+    bsClass="nav"
+    justified={false}
+    pullLeft={false}
+    pullRight={false}
+    stacked={false}
+  >
+    <LinkContainer
+      activeClassName="active"
+      exact={false}
+      replace={false}
+      strict={false}
+      to="/about"
+    >
+      <NavItem
+        active={false}
+        disabled={false}
+        eventKey={1}
+      >
+        About
+      </NavItem>
+    </LinkContainer>
+    <LinkContainer
+      activeClassName="active"
+      exact={false}
+      replace={false}
+      strict={false}
+      to="/repos"
+    >
+      <NavItem
+        active={false}
+        disabled={false}
+        eventKey={2}
+      >
+        Repos
+      </NavItem>
+    </LinkContainer>
+    <LinkContainer
+      activeClassName="active"
+      exact={false}
+      replace={false}
+      strict={false}
+      to="/hello"
+    >
+      <NavItem
+        active={false}
+        disabled={false}
+        eventKey={3}
+      >
+        Hello
+      </NavItem>
+    </LinkContainer>
+  </Nav>
+  <Nav
+    bsClass="nav"
+    justified={false}
+    pullLeft={false}
+    pullRight={true}
+    stacked={false}
+  >
+    <Connect(Login) />
+  </Nav>
+</Uncontrolled(Navbar)>
+`;

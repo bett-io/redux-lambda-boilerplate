@@ -1,6 +1,6 @@
 # helloworld on aws lambda for a web
 
-react, react-router, react-bootstrap, redux, webpack, babel, eslint, mocha, chai, enzyme
+react, react-router, react-bootstrap, redux, webpack, babel, eslint, jest, enzyme
 [![Build Status](https://travis-ci.org/project20-17/helloworld-lambda-web.svg?branch=master)](https://travis-ci.org/project20-17/helloworld-lambda-web)
 
 # Installing dependencies
