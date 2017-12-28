@@ -14,9 +14,9 @@ const Main = ({ sessionCounter }) => (
     </div>
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path="/repos" component={Repos}/>
-      <Route path="/hello" component={Hello}/>
-      <Route path="/about" component={About}/>
+      <Route path='/repos' component={Repos}/>
+      <Route path='/hello' component={Hello}/>
+      <Route path='/about' component={About}/>
     </Switch>
   </div>
 );
