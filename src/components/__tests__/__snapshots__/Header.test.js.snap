@@ -74,7 +74,7 @@ exports[`Header component should pass snapshot check 1`] = `
     pullRight={true}
     stacked={false}
   >
-    <Connect(Login) />
+    <Connect(LoginNavItemContainer) />
   </Nav>
 </Uncontrolled(Navbar)>
 `;

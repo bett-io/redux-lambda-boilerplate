@@ -1,12 +1,15 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { login, logout } from '../actions';
 import { NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const profileImage = (url) => (
   <img className="thumbnail-image" src={url} />
 );
 
-const Login = ({ isLoggedIn, pictureUrl, onClickLogin, onClickLogout }) => {
+const LoginNavItemContainer = ({ isLoggedIn, pictureUrl, onClickLogin, onClickLogout }) => {
   if (isLoggedIn) {
     return (
       <NavDropdown eventKey={1} title={ profileImage(pictureUrl) } id="basic-nav-dropdown">
@@ -32,10 +35,32 @@ const Login = ({ isLoggedIn, pictureUrl, onClickLogin, onClickLogout }) => {
   );
 };
 
-Login.propTypes = {
+LoginNavItemContainer.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   onClickLogin: PropTypes.func.isRequired,
   onClickLogout: PropTypes.func.isRequired,
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: !!state.user.uid,
+    userName: state.user.name,
+    pictureUrl: state.user.pictureUrl,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClickLogin: () => {
+      dispatch(login());
+    },
+    onClickLogout: () => {
+      dispatch(logout());
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginNavItemContainer);

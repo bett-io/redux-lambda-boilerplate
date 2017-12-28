@@ -1,11 +1,13 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import Repos from './Repos';
-import About from './About';
-import Hello from './Hello';
 
-const Main = ({ sessionCounter }) => (
+import connectWithRouter from '../../modules/connectWithRouter';
+import Home from '../components/Home';
+import Repos from '../components/Repos';
+import About from '../components/About';
+import Hello from '../components/Hello';
+import { Route, Switch } from 'react-router-dom';
+
+const MainContainer = ({ sessionCounter }) => (
   <div>
     <div>
       <strong>Session counter: {sessionCounter.counter}</strong>
@@ -21,4 +23,13 @@ const Main = ({ sessionCounter }) => (
   </div>
 );
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    sessionCounter: state.sessionCounter,
+  };
+};
+
+export default connectWithRouter(
+  mapStateToProps,
+  null
+)(MainContainer);
