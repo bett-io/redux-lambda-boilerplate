@@ -4,7 +4,7 @@
   "description": "Helloworld on lambda for a web",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "webpack-dev-server --config webpack.client.config.js --inline --content-base ./devserver/ --history-api-fallback",
     "start:standalone": "npm run build:standalone && node ./standalone/standalone.bundle.js",
     "build:client": "webpack --env production -p --config webpack.client.config.js",
