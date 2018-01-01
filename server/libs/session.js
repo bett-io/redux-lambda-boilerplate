@@ -1,9 +1,24 @@
+// @flow
+
 import { awsConfig } from '../../config';
 import connectDynamoDb from 'connect-dynamodb';
 import session from 'express-session';
 
-const createInitialReduxState = (session) => {
-  const state = {
+export type Session = {
+  counter: number,
+  uid: ?string,
+  name: ?string,
+  pictureUrl: ?string,
+  fbToken: ?string,
+}
+
+export type State = {
+  sessionCounter: {},
+  user?: {},
+}
+
+const createInitialReduxState = (session: Session): State => {
+  const state: State = {
     sessionCounter: {
       counter: session.counter,
     },
@@ -28,6 +43,7 @@ const createSessionMiddleware = () => {
     resave: false,
     saveUninitialized: true,
     secret: 'session secret',
+    store: undefined,
   };
 
   if (process.env.NODE_ENV === 'production') {
@@ -57,7 +73,18 @@ const createSessionMiddleware = () => {
   return session(sessionOption);
 };
 
-const updateAuthResult = (req, authResponse) => {
+export type Request = {
+  session: Session,
+}
+
+export type AuthResponse = {
+  uid: ?string,
+  name: ?string,
+  pictureUrl: ?string,
+  fbToken: ?string,
+}
+
+const updateAuthResult = (req: Request, authResponse: AuthResponse) => {
   req.session.uid = authResponse.uid;
   req.session.name = authResponse.name;
   req.session.pictureUrl = authResponse.pictureUrl;

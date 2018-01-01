@@ -15,8 +15,9 @@
     "build:standalone": "npm run build:standalone:client && npm run build:standalone:server",
     "dist": "cp package.json ./dist/ && cd ./dist && npm install --production",
     "lint": "eslint . --cache",
+    "flow": "flow",
     "deploy": "node-lambda deploy -p --description `git rev-parse HEAD` --prebuiltDirectory dist",
-    "belazy": "npm run lint && npm run build && npm run dist && npm run deploy"
+    "belazy": "npm run flow && npm run lint && npm run build && npm run dist && npm run deploy"
   },
   "author": "",
   "jest": {
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-eslint": "^8.1.2",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.22.0",
@@ -59,6 +61,7 @@
     "eslint": "^4.14.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-react": "^7.5.1",
+    "flow-bin": "^0.62.0",
     "if-env": "^1.0.0",
     "jest": "^22.0.4",
     "node-lambda": "^0.11.5",
