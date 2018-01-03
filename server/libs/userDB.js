@@ -18,7 +18,7 @@ const docClient = () => {
   return docClientInstance;
 };
 
-const createUser = (fbUserInfo) => new Promise((resolve, reject) => {
+const createUser = fbUserInfo => new Promise((resolve, reject) => {
   const params = {
     TableName: awsConfig.dynamodb.userTableName,
     Item: {
@@ -40,9 +40,9 @@ const createUser = (fbUserInfo) => new Promise((resolve, reject) => {
   });
 });
 
-const findFbIdIndex = (fbId) => new Promise((resolve, reject) => {
+const findFbIdIndex = fbId => new Promise((resolve, reject) => {
   const params = {
-    TableName : awsConfig.dynamodb.userTableName,
+    TableName: awsConfig.dynamodb.userTableName,
     IndexName: awsConfig.dynamodb.userIndexName,
     KeyConditionExpression: 'fbid = :fbid',
     ExpressionAttributeValues: {
@@ -68,7 +68,7 @@ const findFbIdIndex = (fbId) => new Promise((resolve, reject) => {
   });
 });
 
-const findUserTable = (id) => new Promise((resolve, reject) => {
+const findUserTable = id => new Promise((resolve, reject) => {
   const params = {
     TableName: awsConfig.dynamodb.userTableName,
     Key: {
@@ -101,7 +101,7 @@ const findUserByFbId = async (fbId) => {
     console.log({ file, function: 'findUserByFbId', fbId, user });
 
     return user;
-  } catch(err) {
+  } catch (err) {
     console.error({ file, function: 'findUserByFbId', fbId, err });
 
     return null;

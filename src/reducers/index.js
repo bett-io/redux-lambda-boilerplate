@@ -13,10 +13,10 @@ const userDefault = {
 
 function user(state = userDefault, action) {
   switch (action.type) {
-  case 'USER_UPDATED':
-    return action.user;
-  default:
-    return state;
+    case 'USER_UPDATED':
+      return action.user;
+    default:
+      return state;
   }
 }
 

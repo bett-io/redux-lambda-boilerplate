@@ -9,7 +9,7 @@ import createReduxStore from '../modules/store';
 import { BrowserRouter } from 'react-router-dom';
 import App from './containers/App';
 
-let initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__;
 
 const store = createReduxStore(initialState);
 
@@ -19,5 +19,5 @@ render(
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

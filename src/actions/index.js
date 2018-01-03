@@ -6,10 +6,8 @@ const userUpdated = user => ({
   user,
 });
 
-export const initializeApp = () => {
-  return () => {
-    facebook.initialize();
-  };
+export const initializeApp = () => () => {
+  facebook.initialize();
 };
 
 export const login = () => async (dispatch) => {
