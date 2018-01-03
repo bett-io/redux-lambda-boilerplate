@@ -23,11 +23,9 @@ const MainContainer = ({ sessionCounter }) => (
   </div>
 );
 
-const mapStateToProps = (state) => {
-  return {
-    sessionCounter: state.sessionCounter,
-  };
-};
+const mapStateToProps = state => ({
+  sessionCounter: state.sessionCounter,
+});
 
 export default connectWithRouter(
   mapStateToProps,

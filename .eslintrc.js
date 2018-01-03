@@ -22,6 +22,9 @@ module.exports = {
     'react'
   ],
   rules: {
+    'arrow-body-style': ['error', 'as-needed', {
+      requireReturnForObjectLiteral: false,
+    }],
     'array-bracket-spacing': [ERROR, 'never'],
     'arrow-parens': [ERROR, 'as-needed', {
       requireForBlockBody: true,
@@ -69,11 +72,29 @@ module.exports = {
     'no-unused-vars': [WARN],
     'no-console': 0,
     'no-path-concat': ERROR,
+    'no-param-reassign': ['error', {
+      props: true,
+      ignorePropertyModificationsFor: [
+        'acc', // for reduce accumulators
+        'e', // for e.returnvalue
+        'req', // for Express requests
+        'request', // for Express requests
+        'res', // for Express responses
+        'response', // for Express responses
+        'ext', // for webpack
+      ]
+    }],
     'no-var': ERROR,
     'object-curly-spacing': [ERROR, 'always'],
+    'one-var': [ERROR, 'never'],
+    'one-var-declaration-per-line': [ERROR, 'always'],
     'prefer-arrow-callback': ['error', {
       allowNamedFunctions: false,
       allowUnboundThis: true,
+    }],
+    'prefer-const': ['error', {
+      destructuring: 'any',
+      ignoreReadBeforeAssign: true,
     }],
     'prefer-template': ERROR,
     quotes: [ERROR, 'single'],
