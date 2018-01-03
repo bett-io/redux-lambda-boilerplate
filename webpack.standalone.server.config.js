@@ -8,7 +8,7 @@ module.exports = {
   ],
 
   output: {
-    path: __dirname + '/standalone',
+    path: path.join(__dirname, '/standalone'),
     filename: 'standalone.bundle.js',
   },
 
@@ -16,8 +16,8 @@ module.exports = {
 
   externals: fs.readdirSync(path.resolve(__dirname, 'node_modules')).concat([
     'react-dom/server', 'react/addons',
-  ]).reduce(function (ext, mod) {
-    ext[mod] = 'commonjs ' + mod;
+  ]).reduce((ext, mod) => {
+    ext[mod] = `commonjs ${mod}`;
     return ext;
   }, {}),
 

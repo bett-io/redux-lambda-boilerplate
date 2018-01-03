@@ -12,7 +12,7 @@ const getUserInfo = async (fbToken) => {
 
     console.log({ function: 'facebook.getUserInfo', meRes: meRes.data });
 
-    const picUrl = 'https://graph.facebook.com/' + meRes.data.id + '/picture';
+    const picUrl = `https://graph.facebook.com/${meRes.data.id}/picture`;
     const picRes = await axios.get(picUrl, {
       params: {
         redirect: false,

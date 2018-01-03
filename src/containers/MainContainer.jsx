@@ -31,5 +31,5 @@ const mapStateToProps = (state) => {
 
 export default connectWithRouter(
   mapStateToProps,
-  null
+  null,
 )(MainContainer);

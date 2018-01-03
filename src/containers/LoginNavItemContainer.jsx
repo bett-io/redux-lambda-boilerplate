@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { login, logout } from '../actions';
 import { NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-const profileImage = (url) => (
+const profileImage = url => (
   <img className="thumbnail-image" src={url} />
 );
 
@@ -15,7 +15,7 @@ const LoginNavItemContainer = ({ isLoggedIn, pictureUrl, onClickLogin, onClickLo
       <NavDropdown eventKey={1} title={ profileImage(pictureUrl) } id="basic-nav-dropdown">
         <MenuItem eventKey={1.1}></MenuItem>
         <MenuItem divider />
-        <MenuItem eventKey={1.2} href="#" onClick={e => {
+        <MenuItem eventKey={1.2} href="#" onClick={(e) => {
           e.preventDefault();
           onClickLogout();
         }}>
@@ -26,7 +26,7 @@ const LoginNavItemContainer = ({ isLoggedIn, pictureUrl, onClickLogin, onClickLo
   }
 
   return (
-    <NavItem href="#" onClick={e => {
+    <NavItem href="#" onClick={(e) => {
       e.preventDefault();
       onClickLogin();
     }}>
@@ -41,26 +41,22 @@ LoginNavItemContainer.propTypes = {
   onClickLogout: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isLoggedIn: !!state.user.uid,
-    userName: state.user.name,
-    pictureUrl: state.user.pictureUrl,
-  };
-};
+const mapStateToProps = state => ({
+  isLoggedIn: !!state.user.uid,
+  userName: state.user.name,
+  pictureUrl: state.user.pictureUrl,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onClickLogin: () => {
-      dispatch(login());
-    },
-    onClickLogout: () => {
-      dispatch(logout());
-    },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onClickLogin: () => {
+    dispatch(login());
+  },
+  onClickLogout: () => {
+    dispatch(logout());
+  },
+});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LoginNavItemContainer);

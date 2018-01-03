@@ -18,7 +18,7 @@ const createReduxStore = (initialState) => {
   return createStore(
     reducer,
     initialState,
-    applyMiddleware(...middlewares)
+    applyMiddleware(...middlewares),
   );
 };
 

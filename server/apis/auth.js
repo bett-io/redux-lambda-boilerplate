@@ -13,7 +13,7 @@ const findOrCreateUser = async (fbUserInfo) => {
     }
 
     return user;
-  } catch(err) {
+  } catch (err) {
     console.log({ file, function: 'auth.findOrCreateUser', err });
     throw err;
   }
