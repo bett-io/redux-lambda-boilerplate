@@ -1,7 +1,7 @@
 # helloworld on aws lambda for a web
 
 react, react-router, react-bootstrap, redux, webpack, babel, eslint, jest, enzyme
-[![Build Status](https://travis-ci.org/project20-17/helloworld-lambda-web.svg?branch=master)](https://travis-ci.org/project20-17/helloworld-lambda-web)
+[![Build Status](https://travis-ci.org/bett-io/redux-lambda-boilerplate.svg?branch=master)](https://travis-ci.org/bett-io/redux-lambda-boilerplate)
 
 # Installing dependencies
 Once you have the application files cloned, just go into the application directory and run command:
